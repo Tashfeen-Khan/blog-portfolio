@@ -1,0 +1,24 @@
+packeges for backend 
+express.js
+git 
+nodemone to automaticly restart server command npm i nodemon -D change sript in packege.jason  "dev": "nodemon index.js"
+next setup mongo db from mongodb.com
+mongo username : tashfeenkhan
+mongo password : t96t7EbafOhs3Jri
+install mongo db :npm install mongodb
+install mongode :npm i mongoose
+ steps 
+1) install packeges
+2) start server and comnect DB database
+3) make folder modles 
+4) make a conection in index file using post method
+5) add middleware in index.js file
+
+
+
+
+
+
+
+
+
