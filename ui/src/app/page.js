@@ -6,7 +6,7 @@ function page() {
   return (
     <>
     <Navbar/>
-    <Home/>
+    
     </>
   )
 }
