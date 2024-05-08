@@ -34,6 +34,7 @@ const BlogSchema = new mongoose.Schema({
   author:String,
   content:String,
   image:String,
+  slug:String,
   // title: {
   //   type: String,
   //   required: [true, "Please add a title for the blog post"],

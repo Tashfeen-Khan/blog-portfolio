@@ -9,6 +9,7 @@ const Form = () => {
     content: "",
     author: "",
     image: "",
+    slug:""
   });
 
   const handleChange = (e) => {
@@ -33,6 +34,7 @@ const Form = () => {
       content: data.content,
       author: data.author,
       image: data.image,
+      slug:data.slug
     };
     axios
       .post("http://localhost:4000/api/blogs", addBlog)
@@ -47,6 +49,7 @@ const Form = () => {
       content: "",
       author: "",
       image: "",
+      slug:""
     });
   };
 
@@ -108,6 +111,23 @@ const Form = () => {
             type="file"
             multiple={false}
             onDone={({ base64 }) => handleImageUpload(base64)}
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="author"
+          >
+            Slug
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="slug"
+            name="slug"
+            type="text"
+            placeholder="Slug"
+            value={data.slug}
+            onChange={handleChange}
           />
         </div>
         <div className="flex items-center justify-between">

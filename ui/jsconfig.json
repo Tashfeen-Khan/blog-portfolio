@@ -5,3 +5,10 @@
     }
   }
 }
+// {
+//   "compilerOptions": {
+//     "paths": {
+//       "@/*": ["./src/app/blog/*/page.js"]
+//     }
+//   }
+// }
