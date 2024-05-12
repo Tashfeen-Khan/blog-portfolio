@@ -17,7 +17,6 @@ const getBlog=async(req,res)=>{
      const {id}=req.params;
      const blog=await Blog.findById(id);
      res.status(200).json(blog);
-       
     } catch (error) {
       console.error(error);
       res.status(500).json({message: error.message});
