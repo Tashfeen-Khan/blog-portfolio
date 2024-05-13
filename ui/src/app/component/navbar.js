@@ -13,8 +13,8 @@ const Navbar = () => {
       </a>
       <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
         <Link href="/" className="mr-5 hover:text-gray-900">Home</Link>
-        <Link href="/about" className="mr-5 hover:text-gray-900">About</Link>
-        <Link href="/blogs" className="mr-5 hover:text-gray-900">Blogs</Link>
+        <Link href="/pages/about" className="mr-5 hover:text-gray-900">About</Link>
+        <Link href="/pages/blogs" className="mr-5 hover:text-gray-900">Blogs</Link>
         <Link href="/form" className="mr-5 hover:text-gray-900">Form</Link>
         <Link href="/blogs" className="mr-5 hover:text-gray-900">Fourth Link</Link>
       </nav>

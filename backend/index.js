@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json())//this help to send data in j son formate
 app.use(express.urlencoded({extended:false  }))
 //rotes
-app.use ("/api/blogs",blogRoutes)
+app.use ("/admin/api/blogs",blogRoutes)
 
 
 
@@ -25,7 +25,7 @@ mongoose
   .then(() => {
     console.log("DB Connected!");
     app.listen(4000, () => {
-      console.log("Server is running on port 3000");
+      console.log("Server is running on port 4000");
     });
   })
   .catch(() => {
