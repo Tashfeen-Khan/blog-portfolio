@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from './component/navbar'
 import Home from './home/page'
 
-function page() {
+function Page() {
   return (
     <>
     <Navbar/>
@@ -11,4 +11,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
