@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from '../../Redux/BlogSclice/blogsclice'
+import { decrement, increment } from '../../Redux/BlogSclice/blogsclice1'
 
 export default function Page() {
   const count = useSelector((state) => state.counter.value)
