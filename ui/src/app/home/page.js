@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from '../component/addblogforms/form'
+import Form from '../_component/addblogforms/form'
 
 const Home = () => {
   return (

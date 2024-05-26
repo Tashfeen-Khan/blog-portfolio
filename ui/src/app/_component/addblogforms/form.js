@@ -37,7 +37,7 @@ const Form = () => {
       slug:data.slug
     };
     axios
-      .post("http://localhost:4000/api/blogs", addBlog)
+      .post("http://localhost:4000/admin/api/blogs", addBlog)
       .then((response) => {
         console.log(response.data);
       })
