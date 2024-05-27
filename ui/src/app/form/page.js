@@ -1,12 +1,13 @@
 import React from 'react'
-import Form from '../component/addblogforms/form'
-import Navbar from '../component/navbar'
+
+import Navbar from '../_component/navbar'
+import AddBlogForm from '../_component/forms/addBlogForm'
 
 const Page = () => {
   return (
     <>
     <Navbar/>
-    <Form/>
+    <AddBlogForm/>
     </>
   )
 }

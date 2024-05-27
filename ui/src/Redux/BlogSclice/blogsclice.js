@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import getAllBlogs from '../../_api/blogApi';
+import {getAllBlogs, deleteBlog} from '../../_api/blogApi';
 
 const initialState = {
   allBlogs: [],
@@ -12,6 +12,10 @@ export const fetchBlogsApi = createAsyncThunk("blogs/fetchBlogsApi", async () =>
   const result = await getAllBlogs();
   // console.log("sclise result",result);
   return result;
+});
+export const deleteBlogApi = createAsyncThunk('blogs/deleteBlog', async (id, thunkAPI) => {
+  await deleteBlog(id);
+  return id;
 });
 
 const blogSlice = createSlice({
@@ -32,6 +36,9 @@ const blogSlice = createSlice({
       .addCase(fetchBlogsApi.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
+      })
+      .addCase(deleteBlogApi.fulfilled, (state, action) => {
+        state.allBlogs = state.allBlogs.filter(blog => blog._id !== action.payload);
       });
   }
 });

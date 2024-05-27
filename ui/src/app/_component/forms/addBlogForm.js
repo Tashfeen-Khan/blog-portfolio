@@ -2,14 +2,14 @@
 import { useState } from "react";
 import axios from "axios";
 import FileBase from "react-file-base64";
+import FormBtn from "../Buttons/FormBtn";
 
-const Form = () => {
+const AddBlogForm= () => {
   const [data, setData] = useState({
     title: "",
     content: "",
     author: "",
-    image: "",
-    slug:""
+    image: ""
   });
 
   const handleChange = (e) => {
@@ -33,8 +33,7 @@ const Form = () => {
       title: data.title,
       content: data.content,
       author: data.author,
-      image: data.image,
-      slug:data.slug
+      image: data.image
     };
     axios
       .post("http://localhost:4000/admin/api/blogs", addBlog)
@@ -48,8 +47,7 @@ const Form = () => {
       title: "",
       content: "",
       author: "",
-      image: "",
-      slug:""
+      image: ""
     });
   };
 
@@ -113,35 +111,13 @@ const Form = () => {
             onDone={({ base64 }) => handleImageUpload(base64)}
           />
         </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="author"
-          >
-            Slug
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="slug"
-            name="slug"
-            type="text"
-            placeholder="Slug"
-            value={data.slug}
-            onChange={handleChange}
-          />
-        </div>
         <div className="flex items-center justify-between">
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
+        
+          <FormBtn onClick={handleSubmit} title={"submit"}/>
         </div>
       </form>
     </div>
   );
 };
 
-export default Form;
+export default AddBlogForm;

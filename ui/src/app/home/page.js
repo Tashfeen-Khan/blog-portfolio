@@ -1,10 +1,12 @@
 import React from 'react'
-import Form from '../_component/addblogforms/form'
+
+import Navbar from '../_component/navbar'
 
 const Home = () => {
   return (
     <div>
-      <Form/>
+      <Navbar/>
+     <h1>Home</h1>
     </div>
   )
 }

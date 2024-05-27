@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getAllBlogs = async () => {
+export const getAllBlogs = async () => {
   try {
     const response = await axios.get("http://localhost:4000/admin/api/blogs");
     // console.log(response.data);
@@ -11,4 +11,13 @@ const getAllBlogs = async () => {
   }
 };
 
-export default getAllBlogs;
+export const deleteBlog = async (id) => {
+  try {
+    const response = await axios.delete(`http://localhost:4000/admin/api/blogs/${id}`);
+    console.log('Blog deleted:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting blog:', error);
+    throw error;
+  }
+};
