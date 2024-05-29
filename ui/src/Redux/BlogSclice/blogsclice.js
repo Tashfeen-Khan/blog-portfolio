@@ -1,21 +1,25 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {getAllBlogs, deleteBlog} from '../../_api/blogApi';
+import { getAllBlogs, deleteBlog, updateBlog } from '../../_api/blogApi';
 
 const initialState = {
   allBlogs: [],
   isLoading: false,
   error: null
 };
-// console.log("allblogs",allBlogs);
 
 export const fetchBlogsApi = createAsyncThunk("blogs/fetchBlogsApi", async () => {
   const result = await getAllBlogs();
-  // console.log("sclise result",result);
   return result;
 });
+
 export const deleteBlogApi = createAsyncThunk('blogs/deleteBlog', async (id, thunkAPI) => {
   await deleteBlog(id);
   return id;
+});
+
+export const updateBlogApi = createAsyncThunk('blogs/updateBlog', async ({ id, updatedData }) => {
+  const response = await updateBlog(id, updatedData);
+  return response;
 });
 
 const blogSlice = createSlice({
@@ -31,7 +35,6 @@ const blogSlice = createSlice({
       .addCase(fetchBlogsApi.fulfilled, (state, action) => {
         state.isLoading = false;
         state.allBlogs = action.payload;
-        console.log("exreduser",action);
       })
       .addCase(fetchBlogsApi.rejected, (state, action) => {
         state.isLoading = false;
@@ -39,6 +42,12 @@ const blogSlice = createSlice({
       })
       .addCase(deleteBlogApi.fulfilled, (state, action) => {
         state.allBlogs = state.allBlogs.filter(blog => blog._id !== action.payload);
+      })
+      .addCase(updateBlogApi.fulfilled, (state, action) => {
+        const index = state.allBlogs.findIndex(blog => blog._id === action.payload._id);
+        if (index !== -1) {
+          state.allBlogs[index] = action.payload;
+        }
       });
   }
 });

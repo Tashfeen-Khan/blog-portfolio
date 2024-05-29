@@ -8,7 +8,6 @@ function BlogPost() {
   const dispatch = useDispatch();
   const blogs = useSelector((data) => data.blogs.allBlogs);
 
-  console.log("blogsdata", blogs);
   useEffect(() => {
     dispatch(fetchBlogsApi());
   }, [dispatch]);

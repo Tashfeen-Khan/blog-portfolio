@@ -19,6 +19,11 @@ export default function BlogCard({ blog }) {
   const handleDelete = () => {
     dispatch(deleteBlogApi(blog._id));
   };
+  const handleUpdate = () => {
+    router.push(`/dynamicPages/updateform/${blog._id}`);
+    console.log("handle id " + blog._id);
+  };
+
   return (
     <Card sx={{ maxWidth: 345 }} >
       <CardMedia
@@ -48,7 +53,7 @@ export default function BlogCard({ blog }) {
       </CardActions>
       <div className='flex flex-wrap justify-between gap-2 p-3'>
      <BlogBtn onClick={()=>router.push("/form")} title={"Create"}/>
-     <BlogBtn title={"Update"}/>
+     <BlogBtn onClick={() => handleUpdate()} title={"Update"}/>
      <BlogBtn onClick={() => handleDelete()} title={"Delete"}/>
      
     
