@@ -1,14 +1,14 @@
-// {
-//   "compilerOptions": {
-//     "paths": {
-//       "@/*": ["./src/*"]
-//     }
-//   }
-// }
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/app/blog/*/page.js"]
+      "@/*": ["./src/*"]
     }
   }
 }
+// {
+//   "compilerOptions": {
+//     "paths": {
+//       "@/*": ["./src/app/blog/*/page.js"]
+//     }
+//   }
+// }

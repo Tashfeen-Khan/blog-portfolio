@@ -16,9 +16,9 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "next/link";
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 const navItems = [
-  { text: "Home", path: "/home" },
+  { text: "Home", path: "/" },
   { text: "Blog", path: "/blogs" },
   { text: "Form", path: "/form" },
   { text: "UPForm", path: "/updateForm" },

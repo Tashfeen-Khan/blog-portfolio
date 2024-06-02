@@ -2,8 +2,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogsApi } from "../../Redux/BlogSclice/blogsclice";
-import Navbar from "../_component/navbar";
+
 import BlogCard from "../_component/cards/BlogCard";
+import Navbar from "../_component/navbar";
+
 function BlogPost() {
   const dispatch = useDispatch();
   const blogs = useSelector((data) => data.blogs.allBlogs);
@@ -11,20 +13,27 @@ function BlogPost() {
   useEffect(() => {
     dispatch(fetchBlogsApi());
   }, [dispatch]);
+  
 
   return (
     <>
       <Navbar />
       <section className="text-gray-600">
-        <div className=" gap-3 p-2 lg:mx-6 grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  ">
-          {blogs &&
-            blogs.length > 0 &&
-            blogs.map((blog) => (
-              <BlogCard className="w-400px" blog={blog} />
-             
-            ))}
+      <div className="p-2 font-extrabold text-4xl sm:text-6xl"> 
+          <h1>blogs.</h1>
         </div>
-      </section>
+  <div className="gap-2 p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ">
+    {blogs && blogs.length > 0 &&
+      [...blogs].reverse().map((blog) => (
+        <>
+        
+        <BlogCard key={blog.id} blog={blog} />
+        </>
+      ))
+    }
+  </div>
+</section>
+
     </>
   );
 }

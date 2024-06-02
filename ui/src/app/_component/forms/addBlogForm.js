@@ -1,15 +1,22 @@
-"use client"
+"use client";
 import { useState } from "react";
 import axios from "axios";
 import FileBase from "react-file-base64";
 import FormBtn from "../Buttons/FormBtn";
 
-const AddBlogForm= () => {
+const AddBlogForm = () => {
   const [data, setData] = useState({
     title: "",
     content: "",
     author: "",
-    image: ""
+    category: "",
+    status: "draft",
+    image: "",
+    meta: {
+      views: 8,
+      likes: 5,
+      comments: 85,
+    },
   });
 
   const handleChange = (e) => {
@@ -17,6 +24,17 @@ const AddBlogForm= () => {
     setData({
       ...data,
       [name]: value,
+    });
+  };
+
+  const handleMetaChange = (e) => {
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      meta: {
+        ...data.meta,
+        [name]: Number(value),
+      },
     });
   };
 
@@ -33,7 +51,10 @@ const AddBlogForm= () => {
       title: data.title,
       content: data.content,
       author: data.author,
-      image: data.image
+      category: data.category,
+      status: data.status,
+      image: data.image,
+      meta: data.meta,
     };
     axios
       .post("http://localhost:4000/admin/api/blogs", addBlog)
@@ -47,7 +68,14 @@ const AddBlogForm= () => {
       title: "",
       content: "",
       author: "",
-      image: ""
+      category: "",
+      status: "draft",
+      image: "",
+      meta: {
+        views: 8,
+        likes: 5,
+        comments: 85,
+      },
     });
   };
 
@@ -105,15 +133,54 @@ const AddBlogForm= () => {
           />
         </div>
         <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="category"
+          >
+            Category
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="category"
+            name="category"
+            type="text"
+            placeholder="Category"
+            value={data.category}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="status"
+          >
+            Status
+          </label>
+          <select
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="status"
+            name="status"
+            value={data.status}
+            onChange={handleChange}
+          >
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+            <option value="archived">Archived</option>
+          </select>
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Image
+          </label>
           <FileBase
             type="file"
             multiple={false}
             onDone={({ base64 }) => handleImageUpload(base64)}
           />
         </div>
-        <div className="flex items-center justify-between">
         
-          <FormBtn onClick={handleSubmit} title={"submit"}/>
+        <div className="flex items-center justify-between">
+          <FormBtn onClick={handleSubmit} title={"Submit"} />
         </div>
       </form>
     </div>
