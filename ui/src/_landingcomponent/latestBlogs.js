@@ -2,6 +2,7 @@
 import { fetchBlogsApi } from "@/Redux/BlogSclice/blogsclice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import dayjs from 'dayjs';
 const LatestBlogs = () => {
     const dispatch = useDispatch();
     const blogs = useSelector((data) => data.blogs.allBlogs);
@@ -9,6 +10,7 @@ const LatestBlogs = () => {
     useEffect(() => {
       dispatch(fetchBlogsApi());
     }, [dispatch]);
+    const formattedDate = dayjs(blogs.createdAt).format('MMM DD, YYYY');
   return (
     
     <section className="text-gray-600 body-font">
@@ -23,26 +25,29 @@ const LatestBlogs = () => {
          [...blogs].reverse().slice(0, 3).map((blog) => (
           <>
           
-            <div className="flex relative ">
-                <div className="w-fulls">
-              <img
-                alt="gallery"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-                src={blog.image}
-              /></div>
-              <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
-                {blog.category}
-                </h2>
-                <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                 {blog.title}
-                </h1>
-                <p className="leading-relaxed">
+          <div className="card border-solid border-2 border-gray-200 rounded-md shadow-md">
+            <div className="image  ">
+              <img className="rounded-t-md w-full h-2/4 object-cover" src={blog.image}/>
+            </div>
+          <div className="card-content mt-2 p-4">
+            <div className="content-publiser gap-2  flex  text-center ">
+              <div className="publisher-image  flex items-center ">
+                <img className="rounded-full h-9 w-9 " src={blog.image}/>
+                </div>
+                <div className="publisher-detail flex flex-col  text-left ">
+            <p className="text-sm text-black ">{blog.author}</p>
+            <p className="text-sm">{formattedDate}</p>
+                  </div> 
+            </div>
+              <p className="text-black font-bold text-2xl">
+            
+                {blog.title}
+              </p>
+              <p className="leading-relaxed hover:text-green-500 transition-colors duration-500 ease-in-out">
                 {blog.content.slice(0, 150)}{blog.content.length > 20 ? "..." : ""}
                 </p>
               </div>
-            </div>
-         
+              </div>
           </>
         ))
       }

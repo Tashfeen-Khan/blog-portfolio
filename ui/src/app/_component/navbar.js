@@ -19,6 +19,8 @@ import Link from "next/link";
 const drawerWidth = 200;
 const navItems = [
   { text: "Home", path: "/" },
+  { text: "About", path: "/about" },
+  { text: "Work", path: "/work" },
   { text: "Blog", path: "/blogs" },
   { text: "Form", path: "/form" },
   { text: "UPForm", path: "/updateForm" },
@@ -57,7 +59,7 @@ export default function Navbar() {
       <AppBar component="nav">
         <Toolbar>
           <IconButton
-            color="inherit"
+            color="black"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
@@ -102,7 +104,7 @@ export default function Navbar() {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 3 }}>
+      <Box component="main" >
         <Toolbar />
       </Box>
     </Box>
