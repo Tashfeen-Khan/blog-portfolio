@@ -4,9 +4,9 @@ const router =express.Router();
 const {getBlogs,getBlog,createBlog,updateBlog,deleteBlog} =require ("../controller/blogController.js")
 
 router.get("/",getBlogs)
-router.get("/:id", getBlog);
-
 router.post("/", createBlog);
+
+router.get("/:id", getBlog);
 
 // // update a Blogs
 router.put("/:id", updateBlog);

@@ -34,9 +34,9 @@ export default function Navbar() {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", bgcolor:"black",color:"white" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        Tashfeen khan
       </Typography>
       <Divider />
       <List>
@@ -54,16 +54,16 @@ export default function Navbar() {
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" , bgcolor:"black",color:"white"}}>
       <CssBaseline />
-      <AppBar component="nav">
+      <AppBar component="nav" sx={{bgcolor:"black"}}>
         <Toolbar>
           <IconButton
             color="black"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { sm: "none" },color:"white" }}
           >
             <MenuIcon />
           </IconButton>
@@ -72,7 +72,7 @@ export default function Navbar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            MUI
+        Tashfeen khan
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
@@ -94,7 +94,7 @@ export default function Navbar() {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: { xs: "block", sm: "none", bgcolor:"black",color:"white" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,

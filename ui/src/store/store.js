@@ -1,7 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit'
-// import counterReducer from '../Redux/BlogSclice/blogsclice1'
-import blogReducer from '../Redux/BlogSclice/blogsclice'
+import { configureStore } from '@reduxjs/toolkit';
+import blogReducer from '../Redux/BlogSclice/blogsclice';
+import selfReducer from '../Redux/SelfSclice/selfSclice';
+
 export const store = configureStore({
-  reducer: { blogs: blogReducer,
+  reducer: {
+    blogs: blogReducer,
+    self: selfReducer,
   },
-})
+});
+
+export default store;

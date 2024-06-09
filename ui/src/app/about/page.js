@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../_component/navbar'
-import AboutMe from '@/_aboutcomponent/AboutMe'
-import Resuma from '@/_aboutcomponent/Resuma'
+import AboutMe from '../../_aboutcomponent/AboutMe'
+import Resuma from '../../_aboutcomponent/Resuma'
 const page = () => {
   return (
     <>

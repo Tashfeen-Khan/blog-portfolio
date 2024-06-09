@@ -1,10 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import FileBase from "react-file-base64";
 import FormBtn from "../Buttons/FormBtn";
-
+import BasicInputField from "../feilds/basicInputFeild";
+import BasicSelect from "../feilds/BasicSelect"; // Import BasicSelect
+import UploadFile from "../Buttons/UploadFile";
+import { useRouter } from "next/navigation";
 const AddBlogForm = () => {
+  const router = useRouter();
   const [data, setData] = useState({
     title: "",
     content: "",
@@ -27,22 +30,16 @@ const AddBlogForm = () => {
     });
   };
 
-  const handleMetaChange = (e) => {
-    const { name, value } = e.target;
-    setData({
-      ...data,
-      meta: {
-        ...data.meta,
-        [name]: Number(value),
-      },
-    });
-  };
-
-  const handleImageUpload = (base64) => {
-    setData({
-      ...data,
-      image: base64,
-    });
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setData((prevState) => ({
+        ...prevState,
+        image: reader.result,
+      }));
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = (e) => {
@@ -80,110 +77,68 @@ const AddBlogForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="title"
-          >
-            Title
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="title"
+  <>
+  <div className="flex flex-col sm:flex-row m-4">
+   <div className="w-full sm:w-2/5 flex justify-center text text-2xl font-bold sm:items-center sm:justify-start">
+          <h1>Add New Blog</h1>
+        </div>
+      <div className= "  w-full sm:w-3/5 items-center shadow-md rounded px-8 pt-6 pb-8 mb-4">
+       
+        <div className="gap-2 w-auto">
+          <BasicInputField
+            label={"Title"}
             name="title"
-            type="text"
-            placeholder="Title"
             value={data.title}
             onChange={handleChange}
           />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="content"
-          >
-            Content
-          </label>
-          <textarea
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="content"
+          <BasicInputField
+            label={"Content"}
             name="content"
-            placeholder="Content"
             value={data.content}
             onChange={handleChange}
-          ></textarea>
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="author"
-          >
-            Author
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="author"
+          />
+          <BasicInputField
+            label={"Author"}
             name="author"
-            type="text"
-            placeholder="Author"
             value={data.author}
             onChange={handleChange}
           />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="category"
-          >
-            Category
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="category"
+          <BasicInputField
+            label={"Category"}
             name="category"
-            type="text"
-            placeholder="Category"
             value={data.category}
             onChange={handleChange}
           />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="status"
-          >
-            Status
-          </label>
-          <select
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="status"
-            name="status"
-            value={data.status}
-            onChange={handleChange}
-          >
-            <option value="draft">Draft</option>
-            <option value="published">Published</option>
-            <option value="archived">Archived</option>
-          </select>
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Image
-          </label>
-          <FileBase
-            type="file"
-            multiple={false}
-            onDone={({ base64 }) => handleImageUpload(base64)}
-          />
-        </div>
         
-        <div className="flex items-center justify-between">
-          <FormBtn onClick={handleSubmit} title={"Submit"} />
+        <BasicSelect
+          label="Status"
+          name="status"
+          value={data.status}
+          onChange={handleChange}
+          options={[
+            { value: "draft", label: "Draft" },
+            { value: "published", label: "Published" },
+            { value: "archived", label: "Archived" },
+          ]}
+        />
+        <div className="mb-4">
+          
+          <UploadFile onChange={handleFileChange} label="Upload Image" />
         </div>
-      </form>
-    </div>
+        <div className="flex items-center justify-between">
+        <FormBtn
+  onClick={(e) => {
+    e.preventDefault(); // preventDefault needs to be called here
+    handleSubmit(e); // pass the event object to handleSubmit
+    router.push("/blogs");
+  }}
+  title={"Submit"}
+/>
+</div>
+        </div>
+      </div>
+      </div>
+      </>
   );
 };
 

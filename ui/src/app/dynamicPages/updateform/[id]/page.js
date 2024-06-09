@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
 import { updateBlogApi } from "../../../../Redux/BlogSclice/blogsclice";
 import BasicInputField from "../../../_component/feilds/basicInputFeild";
+import Navbar from "../../../_component/navbar";
+import BasicBtn from "../../../_component/Buttons/BasicBtn";
 
 const Page = () => {
   const [data, setData] = useState({
@@ -69,8 +71,13 @@ const Page = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+    <>
+    <Navbar/>
+    <div className="flex flex-col sm:flex-row m-4">
+    <div className="w-full sm:w-2/5 flex justify-center text text-2xl font-bold sm:items-center sm:justify-start">
+          <h1>Add New Blog</h1>
+        </div>
+      <form className= "  w-full sm:w-3/5 items-center shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
         <div className="mb-4">
           <BasicInputField
             id="title"
@@ -113,12 +120,12 @@ const Page = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 w-full">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="status">
             Status
           </label>
           <select
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full lg:w-3/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="status"
             name="status"
             value={data.status}
@@ -133,10 +140,12 @@ const Page = () => {
           <FileBase type="file" multiple={false} onDone={({ base64 }) => handleImageUpload(base64)} />
         </div>
         <div className="flex items-center justify-between">
-          <button type="submit" className="btn btn-primary">Update</button>
+          {/* <button type="submit" className="btn btn-primary">Update</button> */}
+        <BasicBtn title="update"type="submit" />
         </div>
       </form>
-    </div>
+      </div>
+    </>
   );
 };
 

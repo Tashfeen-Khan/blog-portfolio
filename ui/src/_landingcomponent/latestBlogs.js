@@ -1,8 +1,8 @@
 "use client"
-import { fetchBlogsApi } from "@/Redux/BlogSclice/blogsclice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import dayjs from 'dayjs';
+import { fetchBlogsApi } from "../Redux/BlogSclice/blogsclice";
 const LatestBlogs = () => {
     const dispatch = useDispatch();
     const blogs = useSelector((data) => data.blogs.allBlogs);
