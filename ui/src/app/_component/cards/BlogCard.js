@@ -46,7 +46,7 @@ export default function BlogCard({ blog }) {
           <div className="flex items-center mt-4">
             <a href="#" className="flex items-center">
               <img
-                src="assets/img/testimonial-2.jpg"
+                src={blog.authorimg}
                 alt=""
                 className="w-8 h-8 rounded-full"
               />

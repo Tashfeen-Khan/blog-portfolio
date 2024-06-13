@@ -3,7 +3,7 @@ import React from 'react'
 
 const BasicBtn = ({title,onClick }) => {
   return (
-    <button className="bg-blue-500 h-8 w-auto p-4 flex items-center rounded-md text-white" onClick={onClick}>
+    <button className="bg-primary-Btn h-8 w-auto p-4 flex items-center rounded-md font-bold text-primary-Bg" onClick={onClick}>
       {title}
     </button>
   )

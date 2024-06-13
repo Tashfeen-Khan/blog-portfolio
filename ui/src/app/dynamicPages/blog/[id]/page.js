@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import dayjs from "dayjs";
-import Tag from "@/app/_component/utilityStyle/catagoryTag";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { IoIosHeartEmpty } from "react-icons/io";
+import Tag from "../../../_component/utilityStyle/catagoryTag";
 const Page = () => {
   const [blog, setBlog] = useState(null);
   const { id } = useParams();

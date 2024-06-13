@@ -10,3 +10,12 @@ export const getSelfData = async () => {
     throw error;
   }
 };
+
+export const updateSelfApi = async (id, updatedData) => {
+  try {
+    const response = await axios.put(`http://localhost:4000/admin/api/self/${id}`, updatedData);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.error || 'An error occurred while updating the self model');
+  }
+};

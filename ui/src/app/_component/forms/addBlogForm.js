@@ -51,6 +51,7 @@ const AddBlogForm = () => {
       category: data.category,
       status: data.status,
       image: data.image,
+      authorimg: data.meta,
       meta: data.meta,
     };
     axios
@@ -68,6 +69,8 @@ const AddBlogForm = () => {
       category: "",
       status: "draft",
       image: "",
+      authorimg: "",
+
       meta: {
         views: 8,
         likes: 5,
@@ -124,6 +127,10 @@ const AddBlogForm = () => {
         <div className="mb-4">
           
           <UploadFile onChange={handleFileChange} label="Upload Image" />
+        </div>
+        <div className="mb-4">
+          
+          <UploadFile onChange={handleFileChange} label="Upload author image" />
         </div>
         <div className="flex items-center justify-between">
         <FormBtn

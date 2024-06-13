@@ -13,9 +13,13 @@ const BlogSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  authorimg: {
+    type: String,
+    required: true,
+  },
   // author: {
   //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User',
+  //   ref: 'Self',
   //   required: true,
   // },
   category: {

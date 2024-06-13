@@ -42,7 +42,6 @@ import { FaGithub } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSelfApi } from "../Redux/SelfSclice/selfSclice";
 
-
 const HeroSection = ({ self }) => {
   const dispatch = useDispatch();
   const { selfDatas, isLoading, error } = useSelector((state) => state.self);
@@ -60,61 +59,61 @@ const HeroSection = ({ self }) => {
   }
 
   return (
-    <header id="header" className="relative h-screen">
-      <div className="object-cover ">
-        <Image
-          src={profilePic}
-          alt="Background Image"
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-      </div>
-
+    <>
       {selfDatas.map((data, index) => (
         <>
-          <div className="bg-white " key={index}>
-            <div className="relative p-4   h-screen flex flex-col justify-center ">
-              <h1 className="text-4xl font-bold text-white ">{data.name}</h1>
-              <h2 className="mt-2 text-2xl text-white">
+          <div
+            className=" text-primary-Text h-[500px] grid grid-cols-1 sm:grid-cols-2 "
+            key={index}
+          >
+            <div className="flex flex-col items-center justify-center lg:flex-row">
+              <div className=" rounded-full border-primary-h1 border-8   ">
+                <img
+                  src={data.image}
+                  className=" h-48 w-48 rounded-full object-cover shadow-2xl bg-primary-h1"
+                  alt="author"
+                />
+              </div>
+            </div>
+            <div className=" p-4 flex flex-col items-center justify-center sm:items-start  ">
+              <h1 className="text-4xl font-bold  ">{data.name}</h1>
+              <h2 className="mt-2 text-2xl ">
                 I'm a passionate{" "}
-                <span className="text-white border-b-2  border-[#18d26e] gap-b  pb-1">
+                <span className=" border-b-2  text-primary-h1 gap-b  pb-1">
                   {data.workField}
                 </span>{" "}
                 from Pakistan
               </h2>
 
-              <div className="mt-4 flex space-x-4 ">
+              <div className="mt-4 flex  ">
                 <a
-                  href="#"
-                  className="text-white text-xl rounded-full p-2 transition duration-500 ease-in-out hover:bg-[#18d26e]"
+                  href={data.social.twitter}
+                  className=" text-xl rounded-full p-2 transition duration-500 ease-in-out hover:text-primary-Hover"
                 >
                   <FaTwitter />
                 </a>
 
                 <a
-                  href="#"
-                  className="text-white text-xl rounded-full p-2 transition duration-500 ease-in-out hover:bg-[#18d26e]"
+                  href={data.social.facebook}
+                  className=" text-xl rounded-full p-2 transition duration-500 ease-in-out hover:text-primary-Hover"
                 >
                   <FaFacebook />
                 </a>
                 <a
-                  href={data.social.
-                    instagram}
-                  className="text-white text-xl rounded-full p-2 transition duration-500 ease-in-out hover:bg-[#18d26e]"
+                  href={data.social.instagram}
+                  className=" text-xl rounded-full p-2 transition duration-500 ease-in-out hover:text-primary-Hover"
                 >
                   <FaInstagram />
                 </a>
                 <a
                   href={data.social.linkedin}
-                  className="text-white text-xl rounded-full p-2 transition duration-500 ease-in-out hover:bg-[#18d26e]"
+                  className=" text-xl rounded-full p-2 transition duration-500 ease-in-out hover:text-primary-Hover"
                 >
                   <FaLinkedin />
                 </a>
                 <a
-                  href="#"
-                  className="text-white text-xl rounded-full p-2 transition duration-500 ease-in-out hover:bg-[#18d26e]"
+                  href={data.social.github}
+                  className=" text-xl rounded-full p-2 transition duration-500 ease-in-out hover:text-primary-Hover"
                 >
                   <FaGithub />
                 </a>
@@ -123,7 +122,7 @@ const HeroSection = ({ self }) => {
           </div>
         </>
       ))}
-    </header>
+    </>
   );
 };
 
