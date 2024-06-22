@@ -1,5 +1,7 @@
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,18 +18,24 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        primary: {
-          Bg: '  #F6F8FF',
-          Text: '#50514F',
-          Btn: '#95C623',
-          h1:'#E88873',
-          Hover: '#E26A50',
-          Shadow: '#23B5D3'
+        light: {
+          Bg: '   #FFFFFF',
+          Text: '#3B3B3B',
+            //blue Primary brand color for the light mode
+          Primary:'#4CA5D0',
+              // Secondary brand color for the light mode (e.g., for accents or highlights)
+          Secondary: '#FFBC38',
+         // green  buttons or links
+         Accent: '#6CA338',
+         // Muted color for borders, dividers, or less prominent elements in the light mode
+         Muted: '#3B3B3B',
           },
-        secondary: {
-          light: '#FBBF24', // custom light secondary color
-          DEFAULT: '#F59E0B', // custom secondary color
-          dark: '#B45309' // custom dark secondary color
+        dark: {
+          bg: '#282828', // custom light secondary color
+          text: '#FFFFFF', // custom secondary color
+          primary:'#4CA5D0',// custom dark secondary color
+          secondary: '#FFBC38',// Secondary brand color for the light mode (e.g., for accents or highlights)
+          accent: '#6CA338',
         }
         // Add more custom colors as needed
       },

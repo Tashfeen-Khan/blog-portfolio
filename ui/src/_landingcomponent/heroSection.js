@@ -63,7 +63,7 @@ const HeroSection = ({ self }) => {
       {selfDatas.map((data, index) => (
         <>
           <div
-            className=" text-primary-Text h-[500px] grid grid-cols-1 sm:grid-cols-2 "
+            className="  h-[500px] grid grid-cols-1 sm:grid-cols-2 "
             key={index}
           >
             <div className="flex flex-col items-center justify-center lg:flex-row">
@@ -76,16 +76,16 @@ const HeroSection = ({ self }) => {
               </div>
             </div>
             <div className=" p-4 flex flex-col items-center justify-center sm:items-start  ">
-              <h1 className="text-4xl font-bold  ">{data.name}</h1>
+              <h1 className="text-4xl font-bold text-light-Secondary ">{data.name}</h1>
               <h2 className="mt-2 text-2xl ">
                 I'm a passionate{" "}
-                <span className=" border-b-2  text-primary-h1 gap-b  pb-1">
+                <span className=" border-b-2 border-light-secondary  gap-b  pb-1 text-light-Primary">
                   {data.workField}
                 </span>{" "}
                 from Pakistan
               </h2>
 
-              <div className="mt-4 flex  ">
+              <div className="mt-4 flex text-light-Accent  ">
                 <a
                   href={data.social.twitter}
                   className=" text-xl rounded-full p-2 transition duration-500 ease-in-out hover:text-primary-Hover"

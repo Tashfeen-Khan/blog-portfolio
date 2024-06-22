@@ -5,6 +5,7 @@ import { fetchBlogsApi } from "../../Redux/BlogSclice/blogsclice";
 
 import BlogCard from "../_component/cards/BlogCard";
 import Navbar from "../_component/navbar";
+import Filterbtn from "../_component/Buttons/filterbtn";
 
 function BlogPost() {
   const dispatch = useDispatch();
@@ -18,16 +19,16 @@ function BlogPost() {
   return (
     <>
       <Navbar />
-      <section className="text-gray-600">
-      <div className="p-2 font-extrabold text-4xl sm:text-6xl"> 
-          <h1>blogs.</h1>
-        </div>
-  <div className="gap-2 p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ">
+      <section className="bg-light-Bg text-light-Text dark:bg-dark-bg dark:text-dark-text">
+        <div className="p-4 sm:px-12">
+    <Filterbtn title="Categories" />
+    </div>
+  <div className="gap-4 p-4 sm:px-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4   ">
     {blogs && blogs.length > 0 &&
       [...blogs].reverse().map((blog) => (
         <>
         
-        <BlogCard key={blog.id} blog={blog} />
+        <BlogCard  key={blog.id} blog={blog} />
         </>
       ))
     }

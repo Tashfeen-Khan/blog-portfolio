@@ -15,6 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "next/link";
+import DarkModeToggleBtn from "./darkmode/DarkModeToggleBtn";
 
 const drawerWidth = 200;
 const navItems = [
@@ -22,8 +23,8 @@ const navItems = [
   { text: "About", path: "/about" },
   { text: "Work", path: "/work" },
   { text: "Blog", path: "/blogs" },
-  { text: "Form", path: "/form" },
-  { text: "UPForm", path: "/updateForm" },
+  { text: "Form", path: "/form" }
+  
 ];
 
 export default function Navbar() {
@@ -34,15 +35,15 @@ export default function Navbar() {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", bgcolor:"black",color:"white" }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center"}}className="bg-light-Bg text-light-Text dark:bg-dark-bg dark:text-light-Bg">
       <Typography variant="h6" sx={{ my: 2 }}>
         Tashfeen khan
       </Typography>
       <Divider />
-      <List>
+      <List  >
         {navItems.map((item) => (
-          <ListItem key={item.text} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+          <ListItem key={item.text} disablePadding >
+            <ListItemButton sx={{ textAlign: "center" }} >
               <Link href={item.path} passHref>
                 <ListItemText primary={item.text} />
               </Link>
@@ -50,20 +51,22 @@ export default function Navbar() {
           </ListItem>
         ))}
       </List>
+      <div className=" flex justify-start">
+<DarkModeToggleBtn/>
+      </div>
     </Box>
   );
 
   return (
-    <Box sx={{ display: "flex" , bgcolor:"black",color:"white"}}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{bgcolor:"black"}}>
+      <AppBar component="nav" className="bg-light-Bg text-light-Text dark:bg-dark-bg dark:text-light-Bg" >
         <Toolbar>
           <IconButton
-            color="black"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" },color:"white" }}
+            sx={{ mr: 2, display: { sm: "none" }}}  className=" text-light-Text  dark:text-light-Bg"
           >
             <MenuIcon />
           </IconButton>
@@ -72,16 +75,19 @@ export default function Navbar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-        Tashfeen khan
+        Tashfeen khan 
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'block',sm:"flex" } }}>
             {navItems.map((item) => (
               <Link key={item.text} href={item.path} passHref>
-                <Button sx={{ color: '#fff' }}>
+                <Button  className=" text-light-Text  dark:text-light-Bg">
                   {item.text}
                 </Button>
               </Link>
             ))}
+            <div className="flex items-center w-fit">
+<DarkModeToggleBtn/>
+            </div>
           </Box>
         </Toolbar>
       </AppBar>
@@ -94,7 +100,7 @@ export default function Navbar() {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none", bgcolor:"black",color:"white" },
+            display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
@@ -103,6 +109,7 @@ export default function Navbar() {
         >
           {drawer}
         </Drawer>
+        
       </nav>
       <Box component="main" >
         <Toolbar />

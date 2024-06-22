@@ -2,7 +2,7 @@ import React from 'react'
 
 const Tag = ({title}) => {
   return (
-    <span class=" tag bg-teal-400 text-white rounded-full px-3 py-1 uppercase text-xs">
+    <span class=" px-2 rounded-2xl  bg-purple-400 text-purple-950 w-fit flex justify-center items-center font-medium">
     {title}
   </span>
   )

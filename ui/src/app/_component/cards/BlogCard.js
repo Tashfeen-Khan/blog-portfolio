@@ -1,35 +1,67 @@
 "use client";
 import * as React from "react";
 import { useRouter } from "next/navigation";
-
 import { deleteBlogApi } from "../../../Redux/BlogSclice/blogsclice";
 import { useDispatch } from "react-redux";
-
-import { FaLongArrowAltRight } from "react-icons/fa";
 import dayjs from "dayjs";
 import BasicBtn from "../Buttons/BasicBtn";
+import Like from "../Buttons/like";
+import Share from "../Buttons/share";
 export default function BlogCard({ blog }) {
   const dispatch = useDispatch();
   const router = useRouter();
-
   const handleDelete = () => {
     dispatch(deleteBlogApi(blog._id));
   };
-
   const handleUpdate = () => {
     router.push(`/dynamicPages/updateform/${blog._id}`);
     console.log("handle id " + blog._id);
   };
-
   if (!blog) {
     return null;
   }
-
   const formattedDate = dayjs(blog.createdAt).format("DD/MM/YYYY");
-
   return (
     <>
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className=" drop-shadow-xl rounded-3xl cursor-pointer border-2 border-light-Muted shadow-lg shadow-light-Muted  ">
+      <div>
+        <img className="rounded-t-3xl w-full" src={blog.image}/>
+      </div>
+      <div className=" p-4 rounded-b-3xl">
+      <div className="flex ">
+<div className=" my-4 w-8 h-8 rounded-full overflow-hidden">
+  <img className="w-full h-full object-cover" src={blog.image} alt="Blog Image"/>
+</div>
+<div className="flex pl-4 flex-col  justify-center sm:flex-row sm:items-center sm:gap-2 ">
+
+<h5 className="text-sm font-semibold text-light-Primary">Foulcher Nathanil</h5>
+<p className="font-lights text-sm text-light-Primary">mm</p>
+</div>
+</div>
+<h5 className="text-xl  font-bold text-light-Secondary ">{blog .title}</h5>
+<div className="flex justify-between px-2 items-center pt-2">
+
+<Like/>
+<Share/>
+  <button
+            className="font-bold text-blue-600 flex items-center text-lg "
+            onClick={() => router.push(`/dynamicPages/blog/${blog._id}`)}
+          >
+            Read More{" "}
+            <spam>
+              {/* <FaLongArrowAltRight className="text-3xl mt-1" /> */}
+            </spam>
+          </button>
+</div>
+</div>
+<div className="flex flex-wrap justify-between gap-2 p-3">
+          <BasicBtn onClick={() => router.push("/form")} title={"Create"} />
+          <BasicBtn onClick={() => handleUpdate()} title={"Update"} />
+          <BasicBtn onClick={() => handleDelete()} title={"Delete"} />
+        </div>
+    </div>
+
+      {/* <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         <a href="blog-single.html">
           <img src={blog.image} alt="" className="w-full h-64 object-cover" />
         </a>
@@ -72,7 +104,7 @@ export default function BlogCard({ blog }) {
           <BasicBtn onClick={() => handleUpdate()} title={"Update"} />
           <BasicBtn onClick={() => handleDelete()} title={"Delete"} />
         </div>
-      </div>
+      </div> */}
 
       
     </>

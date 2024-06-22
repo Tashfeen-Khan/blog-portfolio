@@ -13,15 +13,21 @@ const BlogSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  // If authorimg is supposed to be an object, update it here.
   authorimg: {
-    type: String,
-    required: true,
+    views: {
+      type: Number,
+      default: 0,
+    },
+    likes: {
+      type: Number,
+      default: 0,
+    },
+    comments: {
+      type: Number,
+      default: 0,
+    },
   },
-  // author: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Self',
-  //   required: true,
-  // },
   category: {
     type: String,
     trim: true,
@@ -54,8 +60,6 @@ const BlogSchema = new mongoose.Schema({
     },
   },
 });
-
-
 
 const Blog = mongoose.model("Blog", BlogSchema);
 
