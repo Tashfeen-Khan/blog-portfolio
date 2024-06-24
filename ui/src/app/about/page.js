@@ -5,7 +5,7 @@ import Resuma from '../../_aboutcomponent/Resuma'
 const page = () => {
   return (
     <>
-    <div className="bg-light-Bg text-light-Text dark:bg-dark-bg dark:text-dark-text">
+    <div className="dark:bg-dark-bg">
       <Navbar/>
       <AboutMe/>
       <Resuma/>

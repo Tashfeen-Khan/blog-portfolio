@@ -10,11 +10,10 @@ const initialState = {
 
 export const fetchSelfApi = createAsyncThunk("self/fetchSelfApi", async () => {
   const result = await getSelfData();
-  console.log("slice result", result); // Ensure to remove or comment this out in production
   return result;
 });
 export const updateSelf = createAsyncThunk('self/updateSelf', async ({ id, updatedData }) => {
-  console.log("slice", id, updatedData);
+ 
   const response = await updateSelfApi(id, updatedData);
   return response;
 });

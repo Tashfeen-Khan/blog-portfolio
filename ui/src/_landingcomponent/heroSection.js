@@ -31,9 +31,6 @@
 // export default SelfComponent;
 
 import React, { useEffect } from "react";
-import Image from "next/image";
-import { IoShareSocialOutline } from "react-icons/io5";
-import profilePic from "../../public/bg.jpg"; // Adjust the path as necessary
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
@@ -76,44 +73,44 @@ const HeroSection = ({ self }) => {
               </div>
             </div>
             <div className=" p-4 flex flex-col items-center justify-center sm:items-start  ">
-              <h1 className="text-4xl font-bold text-light-Secondary ">{data.name}</h1>
-              <h2 className="mt-2 text-2xl ">
+              <h1 className="text-4xl font-bold text-light-H_blue ">{data.name}</h1>
+              <h2 className="mt-2 text-2xl text-light-H_black dark:text-light-Bg">
                 I'm a passionate{" "}
-                <span className=" border-b-2 border-light-secondary  gap-b  pb-1 text-light-Primary">
+                <span className=" border-b-2 border-light-secondary  gap-b  pb-1 text-light-Text">
                   {data.workField}
                 </span>{" "}
                 from Pakistan
               </h2>
 
-              <div className="mt-4 flex text-light-Accent  ">
+              <div className="mt-4 flex text-light-Cardborder  ">
                 <a
                   href={data.social.twitter}
-                  className=" text-xl rounded-full p-2 transition duration-500 ease-in-out hover:text-primary-Hover"
+                  className=" text-xl rounded-xl p-2 transition duration-500 ease-in-out hover:bg-light-Card_H_border hover:dark:bg-dark-icon_bg"
                 >
                   <FaTwitter />
                 </a>
 
                 <a
                   href={data.social.facebook}
-                  className=" text-xl rounded-full p-2 transition duration-500 ease-in-out hover:text-primary-Hover"
+                  className=" text-xl rounded-xl p-2 transition duration-500 ease-in-out hover:bg-light-Card_H_border hover:dark:bg-dark-icon_bg"
                 >
                   <FaFacebook />
                 </a>
                 <a
                   href={data.social.instagram}
-                  className=" text-xl rounded-full p-2 transition duration-500 ease-in-out hover:text-primary-Hover"
+                  className=" text-xl rounded-xl p-2 transition duration-500 ease-in-out hover:bg-light-Card_H_border hover:dark:bg-dark-icon_bg"
                 >
                   <FaInstagram />
                 </a>
                 <a
                   href={data.social.linkedin}
-                  className=" text-xl rounded-full p-2 transition duration-500 ease-in-out hover:text-primary-Hover"
+                  className=" text-xl rounded-xl p-2 transition duration-500 ease-in-out hover:bg-light-Card_H_border hover:dark:bg-dark-icon_bg"
                 >
                   <FaLinkedin />
                 </a>
                 <a
                   href={data.social.github}
-                  className=" text-xl rounded-full p-2 transition duration-500 ease-in-out hover:text-primary-Hover"
+                  className=" text-xl rounded-xl p-2 transition duration-500 ease-in-out hover:bg-light-Card_H_border hover:dark:bg-dark-icon_bg"
                 >
                   <FaGithub />
                 </a>

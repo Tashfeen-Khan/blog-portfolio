@@ -16,13 +16,14 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "next/link";
 import DarkModeToggleBtn from "./darkmode/DarkModeToggleBtn";
-
+import "../_component/utilityStyle/style.css"
 const drawerWidth = 200;
 const navItems = [
   { text: "Home", path: "/" },
   { text: "About", path: "/about" },
   { text: "Work", path: "/work" },
   { text: "Blog", path: "/blogs" },
+  { text: "Contect", path: "/contect" },
   { text: "Form", path: "/form" }
   
 ];
@@ -44,7 +45,7 @@ export default function Navbar() {
         {navItems.map((item) => (
           <ListItem key={item.text} disablePadding >
             <ListItemButton sx={{ textAlign: "center" }} >
-              <Link href={item.path} passHref>
+              <Link href={item.path} passHref className="text-light-Text hover:bg-light-Card_H_bg hover:dark:bg-dark-icon_bg hover:border-2 border-solid hover:border-x-light-H_blue">
                 <ListItemText primary={item.text} />
               </Link>
             </ListItemButton>
@@ -66,7 +67,7 @@ export default function Navbar() {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" }}}  className=" text-light-Text  dark:text-light-Bg"
+            sx={{ mr: 2, display: { sm: "none" }}}  className=" text-light-button_bg"
           >
             <MenuIcon />
           </IconButton>
@@ -74,13 +75,13 @@ export default function Navbar() {
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
+          className="text-light-H_blue">
         Tashfeen khan 
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block',sm:"flex" } }}>
             {navItems.map((item) => (
               <Link key={item.text} href={item.path} passHref>
-                <Button  className=" text-light-Text  dark:text-light-Bg">
+                <Button  className=" text-light-Text hover:bg-light-Card_H_bg hover:dark:bg-dark-icon_bg">
                   {item.text}
                 </Button>
               </Link>

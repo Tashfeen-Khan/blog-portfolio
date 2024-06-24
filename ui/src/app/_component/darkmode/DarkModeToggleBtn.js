@@ -24,7 +24,7 @@ const DarkModeToggleBtn = () => {
   return (
     <button
       onClick={toggleDarkMode}
-      className="p-2    rounded"
+      className="p-2 text-light-button_bg rounded-xl hover:bg-light-Card_H_bg hover:dark:bg-dark-icon_bg "
     >
       {darkMode ?  <HiSun className='text-xl' />:<HiMoon className='text-xl' />  
       }

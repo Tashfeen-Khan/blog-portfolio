@@ -1,0 +1,14 @@
+:root {
+    --color-light-Card_H_border: #CCE6FF;
+    --Cardborder:'#66B3FF'
+  }
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.border:hover{
+    border-width: 1px;
+    /* border-color: var(--Cardborder); */
+    border-style: solid;
+}

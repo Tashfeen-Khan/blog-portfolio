@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import BasicBtn from "../Buttons/BasicBtn";
 import Like from "../Buttons/like";
 import Share from "../Buttons/share";
+import { IoIosArrowForward } from "react-icons/io";
 export default function BlogCard({ blog }) {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -23,43 +24,49 @@ export default function BlogCard({ blog }) {
   const formattedDate = dayjs(blog.createdAt).format("DD/MM/YYYY");
   return (
     <>
-    <div className=" drop-shadow-xl rounded-3xl cursor-pointer border-2 border-light-Muted shadow-lg shadow-light-Muted  ">
-      <div>
-        <img className="rounded-t-3xl w-full" src={blog.image}/>
-      </div>
-      <div className=" p-4 rounded-b-3xl">
-      <div className="flex ">
-<div className=" my-4 w-8 h-8 rounded-full overflow-hidden">
-  <img className="w-full h-full object-cover" src={blog.image} alt="Blog Image"/>
-</div>
-<div className="flex pl-4 flex-col  justify-center sm:flex-row sm:items-center sm:gap-2 ">
-
-<h5 className="text-sm font-semibold text-light-Primary">Foulcher Nathanil</h5>
-<p className="font-lights text-sm text-light-Primary">mm</p>
-</div>
-</div>
-<h5 className="text-xl  font-bold text-light-Secondary ">{blog .title}</h5>
-<div className="flex justify-between px-2 items-center pt-2">
-
-<Like/>
-<Share/>
-  <button
-            className="font-bold text-blue-600 flex items-center text-lg "
+      <div className=" rounded-xl cursor-pointer shadow-sm shadow-light-Text hover:border-2 hover:border-light-Cardborder dark:bg-dark-card_bg bg-light-Card_bg  shadow-light-Muted  ">
+        <div>
+          <img className="rounded-t-xl w-full" src={blog.image} />
+        </div>
+        <div className=" p-4 rounded-b-3xl">
+          <div className="flex ">
+            <div className=" my-4 w-8 h-8 rounded-full overflow-hidden">
+              <img
+                className="w-full h-full object-cover"
+                src={blog.image}
+                alt="Blog Image"
+              />
+            </div>
+            <div className="flex pl-4 flex-col  justify-center sm:flex-row sm:items-center sm:gap-2 text-light-Text">
+              <h5 className="text-sm font-semibold text-light-Primary">
+                Foulcher Nathanil
+              </h5>
+              <p className="font-lights text-sm text-light-Primary">mm</p>
+            </div>
+          </div>
+          <h5 className="text-xl  font-bold text-light-H_black dark:text-dark-text">
+            {blog.title}
+          </h5>
+          <button
+            className=" text-sm flex items-center  justify-center text-light-button_bg mt-2 "
             onClick={() => router.push(`/dynamicPages/blog/${blog._id}`)}
           >
             Read More{" "}
             <spam>
-              {/* <FaLongArrowAltRight className="text-3xl mt-1" /> */}
+              <IoIosArrowForward className=" mt-1" />
             </spam>
           </button>
-</div>
-</div>
-<div className="flex flex-wrap justify-between gap-2 p-3">
+          <div className="flex justify-between px-2 items-center pt-2">
+            <Like />
+            <Share />
+          </div>
+        </div>
+        <div className="flex flex-wrap justify-between gap-2 p-3">
           <BasicBtn onClick={() => router.push("/form")} title={"Create"} />
           <BasicBtn onClick={() => handleUpdate()} title={"Update"} />
           <BasicBtn onClick={() => handleDelete()} title={"Delete"} />
         </div>
-    </div>
+      </div>
 
       {/* <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         <a href="blog-single.html">
@@ -105,8 +112,6 @@ export default function BlogCard({ blog }) {
           <BasicBtn onClick={() => handleDelete()} title={"Delete"} />
         </div>
       </div> */}
-
-      
     </>
   );
 }

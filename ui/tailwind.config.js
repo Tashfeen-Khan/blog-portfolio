@@ -19,23 +19,24 @@ module.exports = {
       },
       colors: {
         light: {
-          Bg: '   #FFFFFF',
-          Text: '#3B3B3B',
-            //blue Primary brand color for the light mode
-          Primary:'#4CA5D0',
-              // Secondary brand color for the light mode (e.g., for accents or highlights)
-          Secondary: '#FFBC38',
-         // green  buttons or links
-         Accent: '#6CA338',
-         // Muted color for borders, dividers, or less prominent elements in the light mode
-         Muted: '#3B3B3B',
+          Bg:'#FFFFFF',//baground
+          H_blue:'#0073E5',//blue hiding
+            
+          H_black:'#0F1214',//black hiding
+              Text:"#777D84",
+          button_bg:'#006CD7',//button baground
+          button_text:"#FFFFFF",
+         Card_bg:'#F0F7FF',
+         Cardborder:'#66B3FF',
+         Card_H_bg:'#F0F7FF',
+         Card_H_border:'#CCE6FF',
+       
           },
         dark: {
-          bg: '#282828', // custom light secondary color
-          text: '#FFFFFF', // custom secondary color
-          primary:'#4CA5D0',// custom dark secondary color
-          secondary: '#FFBC38',// Secondary brand color for the light mode (e.g., for accents or highlights)
-          accent: '#6CA338',
+          bg: '#0F1214', // custom light secondary color
+          card_bg:"#0E161D",
+          text:"#FFFFFF",
+          icon_bg:"#0A2540",
         }
         // Add more custom colors as needed
       },

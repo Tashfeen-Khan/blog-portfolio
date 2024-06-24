@@ -6,6 +6,9 @@ const mongoose = require("mongoose"); // Mongoose is an ODM (Object Data Modelin
 const blogRoutes = require("./routes/blogRoutes"); // Import the blog routes (assuming they are defined in the specified path)
 // const selfRoutes =require("./routes/selfRoutes")
 const selfRoutes= require ("./routes/selfRoutes")
+const eduRoutes= require ("./routes/eduRoutes")
+const ExpRoutes= require ("./routes/experianceRoutes")
+const WorkRoutes= require ("./routes/workRouts")
 // Initialize the Express application
 const app = express();
 
@@ -16,7 +19,10 @@ app.use(express.urlencoded({ extended: false })); // Parse incoming URL-encoded 
 
 // Routes
 app.use("/admin/api/blogs", blogRoutes); // Use the blog routes for any requests to /admin/api/blogs
-app.use("/admin/api/self",selfRoutes)
+app.use("/admin/api/self",selfRoutes);
+app.use("/admin/api/edu",eduRoutes);
+app.use("/admin/api/exp",ExpRoutes);
+app.use("/admin/api/work",WorkRoutes);
 // MongoDB connection
 mongoose
   .connect(

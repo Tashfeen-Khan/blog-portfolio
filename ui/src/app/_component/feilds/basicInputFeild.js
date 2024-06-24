@@ -10,7 +10,8 @@ const BasicInputField = ({ label, name, onChange, value }) => {
         '& > :not(style)':
        {m: 1, 
         width: 500,
-        maxWidth: '100%',}
+        maxWidth: '100%',
+      }
       }}
       noValidate
       autoComplete="off"

@@ -19,7 +19,7 @@ function BlogPost() {
   return (
     <>
       <Navbar />
-      <section className="bg-light-Bg text-light-Text dark:bg-dark-bg dark:text-dark-text">
+      <section className="bg-light-Bg dark:bg-dark-bg">
         <div className="p-4 sm:px-12">
     <Filterbtn title="Categories" />
     </div>

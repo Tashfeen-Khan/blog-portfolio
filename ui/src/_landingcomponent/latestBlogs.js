@@ -14,13 +14,13 @@ const LatestBlogs = () => {
   }, [dispatch]);
   const formattedDate = dayjs(blogs.createdAt).format("MMM DD, YYYY");
   return (
-    <section className="text-gray-600 body-font">
+    <section className=" body-font">
       <div className="px-5 py-12 sm:px-12 mx-auto">
         <div className="flex flex-col  w-full mb-5 justify-center sm:items-center">
-          <h1 className=" sm:text-3xl text-2xl font-medium   mb-4 text-gray-900">
-            Latest Articles
+          <h1 className="text-light-H_blue sm:text-3xl text-2xl font-medium   mb-4 ">
+            Latest <spam className="text-light-H_black dark:text-dark-text">Articles</spam>
           </h1>
-          <p className="text-xl">
+          <p className="text-xl text-light-Text">
             Discover the most outstanding articles in all topics of tech.
           </p>
         </div>
@@ -32,26 +32,26 @@ const LatestBlogs = () => {
               .slice(0, 4)
               .map((blog) => (
                 <>
-                  <div className="relative bg-black rounded-md h-full w-full cursor-pointer group">
+                  <div className="relative  rounded-md h-full w-full cursor-pointer group">
                     <img
                       className="h-full w-full rounded-md"
                       src={blog.image}
                       alt="Blog image"
                     />
                     <div className="absolute top-0 left-0 right-0 p-2 hidden group-hover:flex justify-between">
-                      <div className="bg-light-Accent shadow-md shadow-light-Muted flex justify-center items-center w-16 h-8 text-lg rounded-xl">
+                      <div className="text-light-button_bg bg-light-Card_H_border dark:bg-dark-icon_bg dark:text-dark-text shadow-md shadow-light-Muted flex justify-center items-center w-16 h-8 text-lg rounded-xl">
                         <IoIosHeartEmpty />
                         35
                       </div>
-                      <div className="text-lg bg-slate-50 hover:bg-slate-200 w-10 h-10 flex justify-center items-center rounded-md">
+                      <div className="text-light-button_bg bg-light-Card_H_border dark:bg-dark-icon_bg dark:text-dark-text text-lg w-10 h-10 flex justify-center items-center rounded-md">
                         <GoShareAndroid />
                       </div>
                     </div>
                     <div className="absolute bottom-0 left-4 right-4  text-white p-2 rounded-b-md ">
-                      <p className="w-fit px-2 rounded-md bg-red-100 text-red-400 ">
+                      <p className="w-fit px-2 rounded-md bg-light-button_bg text-light-Bg shadow-md shadow-light-Text dark:shadow-md dark:shadow-dark-icon_bg ">
                         {blog.category}
                       </p>
-                      <p className="font-bold">{blog.title}</p>
+                      <p className="font-bold text-light-H_black text-xl  ">{blog.title}</p>
                       <div className="flex gap-2">
                         <p className=" font-light text-sm">{blog.author}.</p>
                         <p className="font-light text-sm">{formattedDate}</p>

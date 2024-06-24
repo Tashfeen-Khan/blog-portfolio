@@ -88,7 +88,5 @@ const SelfSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-
 const Self = mongoose.model("Self", SelfSchema);
-
 module.exports = Self;
