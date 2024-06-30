@@ -1,36 +1,6 @@
 "use client";
-// import React, { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchSelfApi } from '../Redux/SelfSclice/selfSclice';
 
-// const SelfComponent = () => {
-//   const dispatch = useDispatch();
-//   const { selfDatas, isLoading, error } = useSelector((state) => state.self);
-
-//   useEffect(() => {
-//     dispatch(fetchSelfApi());
-//   }, [dispatch]);
-
-//   if (isLoading) {
-//     return <div>Loading...</div>;
-//   }
-
-//   if (error) {
-//     return <div>Error: {error}</div>;
-//   }
-
-//   return (
-//     <div>
-//       {selfDatas.map((data, index) => (
-//         <div key={index}>{data.email}</div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default SelfComponent;
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
@@ -38,8 +8,10 @@ import { FaInstagram } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSelfApi } from "../Redux/SelfSclice/selfSclice";
-
+import { FadeLoader } from 'react-spinners';
+// import nnn from "../../public/images/heroPoster.png"
 const HeroSection = ({ self }) => {
+  let [color, setColor] = useState("#0073E5");
   const dispatch = useDispatch();
   const { selfDatas, isLoading, error } = useSelector((state) => state.self);
 
@@ -48,7 +20,11 @@ const HeroSection = ({ self }) => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <FadeLoader color={color} loading={isLoading} className="text-light-H_blue" /> {/* Display the spinner */}
+      </div>
+    );
   }
 
   if (error) {
@@ -63,13 +39,10 @@ const HeroSection = ({ self }) => {
             className="  h-[500px] grid grid-cols-1 sm:grid-cols-2 "
             key={index}
           >
-            <div className="flex flex-col items-center justify-center lg:flex-row">
-              <div className=" rounded-full border-primary-h1 border-8   ">
-                <img
-                  src={data.image}
-                  className=" h-48 w-48 rounded-full object-cover shadow-2xl bg-primary-h1"
-                  alt="author"
-                />
+            <div className="flex items-center justify-center ">
+              <div className="  w-1/2   h-1/2 flex items-center justify-center">
+              <img src="/images/hero.png" alt="hero banner" className='object-cover' />
+                      
               </div>
             </div>
             <div className=" p-4 flex flex-col items-center justify-center sm:items-start  ">

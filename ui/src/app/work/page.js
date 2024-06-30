@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../_component/navbar";
 import { fetchWorkApi } from "../../Redux/WorkSclice/worksclice";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,11 +8,13 @@ import dayjs from "dayjs";
 import { LuEye } from "react-icons/lu";
 import Share from "../_component/Buttons/share";
 import Like from "../_component/Buttons/like";
+import { FadeLoader } from 'react-spinners';
 const Page = () => {
+  let [color, setColor] = useState("#0073E5");
   const dispatch = useDispatch();
   const {
     allwork,
-    isLoading: workLoading,
+    isLoading,
     error: workError,
   } = useSelector((state) => state.Work);
 
@@ -20,13 +22,17 @@ const Page = () => {
     dispatch(fetchWorkApi());
   }, [dispatch]);
 
-  if (workLoading || workError) return <p>Loading...</p>;
+  if (isLoading) return (
+    <div className="flex justify-center items-center h-screen">
+    <FadeLoader color={color} loading={isLoading}  /> {/* Display the spinner */}
+  </div>
+  );
   if (workError) return <p>Error: {workError}</p>;
   const formattedDate = dayjs(allwork.Date).format("DD/MM/YYYY");
   return (
     <>
+      <section  className="bg-light-Bg dark:bg-dark-bg h-screen">
       <Navbar />
-      <section id="work" className="bg-light-Bg dark:bg-dark-bg">
         <div className="gap-2 p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {allwork &&
             allwork.map((work, index) => (

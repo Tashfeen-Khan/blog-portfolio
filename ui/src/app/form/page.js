@@ -18,7 +18,7 @@ const Page = () => {
     <>
       <Navbar />
 
-      <div>
+      <div className="bg-black">
         <div className="flex gap-2 bg-orange-200 p-2">
           <BasicBtn
             title="AddBlog"

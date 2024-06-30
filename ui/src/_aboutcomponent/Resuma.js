@@ -1,11 +1,12 @@
 "use client"
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSelfApi } from "../Redux/SelfSclice/selfSclice";
 import { fetchEduApi } from '../Redux/EduSclice/eduSclice';
 import { fetchExpApi } from '../Redux/experianceSclice/expSclice';
-
+import { FadeLoader } from 'react-spinners';
 const Resume = () => {
+  let [color, setColor] = useState("#0073E5");
   const dispatch = useDispatch();
   const { selfDatas, isLoading: selfLoading, error: selfError } = useSelector((state) => state.self);
   const { alledus, isLoading: eduLoading, error: eduError } = useSelector((state) => state.education);
@@ -18,7 +19,11 @@ console.log("ui"+ allexps);
     dispatch(fetchExpApi());
   }, [dispatch]);
 
-  if (selfLoading || eduLoading) return <p>Loading...</p>;
+  if (selfLoading || eduLoading) return (
+    <div className="flex justify-center items-center h-screen">
+    <FadeLoader color={color} loading={selfLoading || eduLoading}  /> {/* Display the spinner */}
+  </div>
+  );
   if (selfError || eduError) return <p>Error: {selfError || eduError}</p>;
 
   return (

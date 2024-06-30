@@ -7,7 +7,7 @@ import Navbar from "../../../_component/navbar";
 import BasicBtn from "../../../_component/Buttons/BasicBtn";
 import { updateSelf } from "../../../../Redux/SelfSclice/selfSclice";
 import { useParams, useRouter } from "next/navigation";
-
+import {  toast } from 'react-toastify';
 const Page = () => {
   const [data, setData] = useState({
     name: "",
@@ -71,11 +71,11 @@ const Page = () => {
     e.preventDefault();
     dispatch(updateSelf({ id, updatedData: data }))
       .then((response) => {
-        console.log("Profile updated successfully");
+        toast.success("Profile updated successfully");
         router.push("/"); // Redirect to another page after successful update
       })
       .catch((err) => {
-        console.log(`Error: ${err}`);
+        toast.warn(`Error: ${err}`);
       });
   };
 
